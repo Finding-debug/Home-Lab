@@ -1,0 +1,15 @@
+# To run the file in docker is to run "docker compose -f itgz-minecraft-server.yaml up -d"
+# You can rename the file and type the same command but with you file name after -f "filename.yaml"
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - M:\MC_Stuff\MC_Data:/data
+    restart: on-failure:3
